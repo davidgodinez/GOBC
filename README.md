@@ -14,7 +14,9 @@ Use the following [link](https://code.visualstudio.com/download) for download th
 Be sure to install necessary extensions such as pylance, and other python suggestions. These will usually be suggested by VSCode.
 
 ```
+
 You can run VS Code from the terminal by typing 'code' after adding it to the path: Launch VS Code. Open the Command Palette (Cmd+Shift+P) and type 'shell command' to find the Shell Command: Install 'code' command in PATH command.
+
 ```
 
 ### Poetry
