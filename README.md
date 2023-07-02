@@ -8,7 +8,10 @@ To configure the summarizer, several steps are necessary.
 
 ### VSCode
 
-Be sure to install VSCode. This is your code editor and will be place you interact with the codebase. Use the following [link](https://code.visualstudio.com/download) for download the software package. Be sure to install necessary extensions such as pylance, and other python suggestions. These will usually be suggested by VSCode.
+Be sure to install VSCode. This is your code editor and will be place you interact with the codebase. 
+Use the following [link](https://code.visualstudio.com/download) for download the software package. 
+
+Be sure to install necessary extensions such as pylance, and other python suggestions. These will usually be suggested by VSCode.
 
 ```
 You can run VS Code from the terminal by typing 'code' after adding it to the path: Launch VS Code. Open the Command Palette (Cmd+Shift+P) and type 'shell command' to find the Shell Command: Install 'code' command in PATH command.
@@ -29,6 +32,17 @@ Once a shell has been initialized, you will need to install your dependencies, n
 
 *** 
 
+## Credentials
+
+Be sure to create a file called `credentials.json` inside the root directory. This file will have the following content:
+
+```
+{
+    "OPENAI_KEY": "<openai_api_key>"
+}
+
+```
+
 ## Installation / Running the Application
 
 Once the setup is completed and all dependencies are installed, you can run the application by following these steps:
@@ -42,6 +56,7 @@ Once the setup is completed and all dependencies are installed, you can run the 
 4. The summarized text will be saved in a new file in the `summarized_files` directory.
 
 ***
+
 ## Project Structure
 
 Here's a brief explanation of the project structure:
