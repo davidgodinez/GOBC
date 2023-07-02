@@ -40,23 +40,52 @@ def summarize_text(text):
     return response['choices'][0]['message']['content'].strip()
 
 
-# Summarize a word file and save the summarized text to a new file
+# New function to get a list of already processed files
+def get_processed_files():
+    with open('processed_files.txt', 'r') as f:
+        return f.read().splitlines()
+
+
+# New function to mark a file as processed
+def mark_file_as_processed(filename):
+    with open('processed_files.txt', 'a') as f:
+        f.write(filename + '\n')
+
+# read a text file and return the text
+def read_text_file(file_path):
+    with open(file_path, 'r') as file:
+        return file.read()
+
+
+
+# Modified function to only process unprocessed files
 def summarize_word_file(file_path):
-    text_to_summarize = read_word_file(file_path)
-    summarized_text = summarize_text(text_to_summarize)
+    # Get a list of already processed files
+    processed_files = get_processed_files()
 
-    if not os.path.exists('summarized_files'):
-        os.makedirs('summarized_files')
+    # Only process the file if it hasn't been processed yet
+    if file_path not in processed_files:
+        text_to_summarize = read_word_file(file_path)
+        summarized_text = summarize_text(text_to_summarize)
 
-    now = datetime.now()
-    now_str = now.strftime("%Y-%m-%d_%H-%M-%S")
-    filename = f'summarized_files/summarized_text_{now_str}.txt'
+        if not os.path.exists('summarized_files'):
+            os.makedirs('summarized_files')
 
-    with open(filename, 'w') as file:
-        file.write(summarized_text)
-    
-    return filename  # Return the filename to show where the summarized text was saved.
+        now = datetime.now()
+        now_str = now.strftime("%Y-%m-%d_%H-%M-%S")
+        filename = f'summarized_files/summarized_text_{now_str}.txt'
+
+        with open(filename, 'w') as file:
+            file.write(summarized_text)
+        
+        # Mark the file as processed
+        mark_file_as_processed(file_path)
+
+        return filename  # Return the filename to show where the summarized text was saved.
+    else:
+        return f"File {file_path} has already been processed."
+
 
 # Use the function like this:
 # filename = summarize_word_file(file_path=file_path)
-# print(f"Summarized text saved to: {filename}")
+# print(f"Summarized text saved to: {filename}") if filename# print(f"Summarized text saved to: {filename}")
